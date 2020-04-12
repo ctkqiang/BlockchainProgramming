@@ -22,7 +22,7 @@ import datetime
 import time
 
 print(Copyright)
-num_blocks_to_add = 10
+num_blocks_to_add = 999999999
 
 block_chain = [Block.create_genesis_block()]
 print("The genesis block has been created.")
