@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
@@ -47,6 +48,18 @@ public class BlockchainActivity extends AppCompatActivity {
         Log.d(TAG, "Starting " + BlockchainActivity.class.getSimpleName());
         DeclarationInit();
         DisplayHashesToScreen();
+        Handler handler=new Handler();
+        handler.post(new Runnable(){
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void run() {
+                Blocks genericblocks = new Blocks("Hashes", "0");
+                Blocks blocks = new Blocks("Hashes", genericblocks.HASHES);
+                BlockchainOutput.setText("Block created." +genericblocks + blocks);
+                Log.d(TAG, "run: " + blocks);
+            }
+        });
+
     }
 
     private void DisplayHashesToScreen() {
