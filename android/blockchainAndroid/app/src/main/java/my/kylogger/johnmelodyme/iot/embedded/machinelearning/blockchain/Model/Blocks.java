@@ -1,4 +1,8 @@
-package my.kylogger.johnmelodyme.iot.embedded.machinelearning.blockchain;
+package my.kylogger.johnmelodyme.iot.embedded.machinelearning.blockchain.Model;
+
+import java.util.Date;
+
+import my.kylogger.johnmelodyme.iot.embedded.machinelearning.blockchain.Helper.StringUtil;
 
 /**
  *                   Copyright 2020 © John Melody Me
@@ -19,26 +23,24 @@ package my.kylogger.johnmelodyme.iot.embedded.machinelearning.blockchain;
  *       @INPIREDBYGF: Cindy Tan Sin Dee <3
  */
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
-import android.widget.TextView;
+public class Blocks {
+    public String HASHES;
+    private String PREVIOUS_HASHES;
+    private String DATA;
+    private long timeStamp;
 
-public class BlockchainActivity extends AppCompatActivity {
-    public static final String TAG = "Blockchain";
-    private TextView BlockchainOutput;
-
-    public void DeclarationInit() {
-        BlockchainOutput = findViewById(R.id.blockchain);
-        BlockchainOutput.setMovementMethod(new ScrollingMovementMethod());
+    //BLOCK's Constructor:
+    public Blocks(String DATA, String PREVIOUS_HASHES) {
+        this.DATA = DATA;
+        this.PREVIOUS_HASHES = PREVIOUS_HASHES;
+        this.timeStamp = new Date().getTime();
+        this.HASHES = CALCULATE_HASHES();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Log.d(TAG, "Starting " + BlockchainActivity.class.getSimpleName());
-        DeclarationInit();
+    private String CALCULATE_HASHES() {
+        String calculatedHashes = StringUtil.applySha256(PREVIOUS_HASHES +
+                Long.toString(timeStamp) +
+                DATA);
+        return CALCULATE_HASHES();
     }
 }
