@@ -20,10 +20,16 @@ package my.kylogger.johnmelodyme.iot.embedded.machinelearning.blockchain;
  */
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
+
+import java.util.concurrent.BlockingQueue;
+
+import my.kylogger.johnmelodyme.iot.embedded.machinelearning.blockchain.Model.Blocks;
 
 public class BlockchainActivity extends AppCompatActivity {
     public static final String TAG = "Blockchain";
@@ -40,5 +46,32 @@ public class BlockchainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "Starting " + BlockchainActivity.class.getSimpleName());
         DeclarationInit();
+        DisplayHashesToScreen();
+    }
+
+    private void DisplayHashesToScreen() {
+        final int Hashebyte = 0;
+        final int i = +1;
+        final Runnable InfiniteHashes = new Runnable() {
+            @Override
+            public void run() {
+                int testByte = 0;
+                while (testByte == 0) {
+                    BlockchainOutput.post(new Runnable() {
+                        @SuppressLint("SetTextI18n")
+                        @Override
+                        public void run() {
+                            Blocks genericblocks = new Blocks("Hashes", "0");
+                            Blocks blocks = new Blocks("Hashes", genericblocks.HASHES);
+                            BlockchainOutput.setText("Block created." +genericblocks + blocks);
+                            Log.d(TAG, "run: " + blocks);
+                        }
+                    });
+                }
+            }
+        };
+
+        Thread HASHESLOOP = new Thread(InfiniteHashes);
+        HASHESLOOP.start();
     }
 }

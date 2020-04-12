@@ -2,6 +2,9 @@
   <dictionary name="johnm">
     <words>
       <w>blockchain</w>
+      <w>genericblocks</w>
+      <w>hashebyte</w>
+      <w>hashesloop</w>
     </words>
   </dictionary>
 </component>
