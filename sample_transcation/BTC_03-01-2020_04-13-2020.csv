@@ -1,0 +1,3 @@
+﻿"date","time","token","type","amount","value_then","value_now","exchange_rate_then","tx","note"
+"2020-04-13","10:29:04 GMT +00:00","BTC","received","0.00158568","$ 10.64","$ 10.66","$ 6,712.59","21d70baf21eb0f9b286ba76daf1be385276450c09eb6ec73a445c726e4b5c54b",""
+"2020-04-11","07:57:05 GMT +00:00","BTC","received","0.00156618","$ 10.79","$ 10.53","$ 6,892.01","0259bf6f6b4f749c402cb9ad51a156c9cd9d89e3099ef5c382894d16205533af","Havking service"
