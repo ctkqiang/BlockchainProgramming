@@ -28,7 +28,6 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
 
-import java.util.concurrent.BlockingQueue;
 
 import my.kylogger.johnmelodyme.iot.embedded.machinelearning.blockchain.Model.Blocks;
 
@@ -71,7 +70,7 @@ public class BlockchainActivity extends AppCompatActivity {
                 int testByte = 0;
                 while (testByte == 0) {
                     BlockchainOutput.post(new Runnable() {
-                        @SuppressLint("SetTextI18n")
+//                        @SuppressLint("SetTextI18n")
                         @Override
                         public void run() {
                             Blocks genericblocks = new Blocks("Hashes", "0");
